@@ -19,17 +19,3 @@ async def get_user(email: str):
 @app.get("/users")
 async def get_users():
     return users
-
-
-@app.get("/users/email/{email}")
-async def get_user_with_email(email):
-    user = get_user(email)
-    if user is None:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="User not found"
-        )
-
-    return user
-
-
